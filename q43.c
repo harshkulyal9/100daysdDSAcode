@@ -1,58 +1,38 @@
-//Count Nodes in Linked List
+//count node
 #include<stdio.h>
 #include<stdlib.h>
-
 struct node{
-    int data;
+    int a;
     struct node *next;
 };
-
-struct node *head = NULL;
-
-void insert(int value)
-{
-    struct node *newnode, *temp;
-
-    newnode = (struct node*)malloc(sizeof(struct node));
-    newnode->data = value;
-    newnode->next = NULL;
-
-    if(head == NULL)
-    {
-        head = newnode;
+struct node *head=NULL;
+void count(){
+    int count=0;
+    if(head==NULL){
+        printf("no node present");
+        return ;
     }
-    else
-    {
-        temp = head;
-        while(temp->next != NULL)
-        {
-            temp = temp->next;
-        }
-        temp->next = newnode;
-    }
-}
-
-int countNodes()
-{
-    struct node *temp = head;
-    int count = 0;
-
-    while(temp != NULL)
-    {
+    struct node*t=head;
+    while(t!=NULL){
         count++;
-        temp = temp->next;
+        t=t->next;
     }
-    return count;
+    printf("total nodes are: %d",count);
 }
-
-int main()
-{
-    insert(10);
-    insert(20);
-    insert(30);
-    insert(40);
-
-    printf("Total Nodes = %d", countNodes());
-
+int main(){
+    struct node *first=(struct node*)malloc(sizeof(struct node));
+    struct node *second=(struct node*)malloc(sizeof(struct node));
+    struct node *third=(struct node*)malloc(sizeof(struct node));
+    first->a=10;
+    first->next=second;
+    second->a=20;
+    second->next=third;
+    third->a=30;
+    third->next=NULL;
+    head=first;
+    count();
+    
     return 0;
 }
+
+   
